@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/logo.png" alt="Replate logo" width="360">
+  
 </p>
 
 <p align="center"><b>Order. Save. Waste less.</b></p>
@@ -10,7 +10,7 @@ Replate is a full-stack food ordering platform for restaurants and bakeries. It 
 
 It is built with the MERN stack (MongoDB, Express, React, Node.js) and has three parts: a customer app, an admin panel for restaurants, and a REST API.
 
-*MCA Final Year Project by Adinath Borse.*
+Project by Adinath Borse.*
 
 ---
 
