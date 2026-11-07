@@ -50,24 +50,23 @@ const MysteryBagDisplay = () => {
 
   return (
     <div className="mystery-section" id="mystery-deals">
-      {/* Top Banner Header */}
       <div className="mystery-banner">
         <div className="mystery-badge-row">
-          <span className="badge-pill eco-pill">🍃 Anti-Food Waste Initiative</span>
-          <span className="badge-pill flash-pill">⚡ Limited Night Feasts</span>
+          <span className="badge-pill eco-pill">Good food, less waste</span>
+          <span className="badge-pill flash-pill">Available tonight</span>
         </div>
 
         <div className="mystery-header-content">
           <div className="header-text">
-            <h2>🌙 Late-Night Mystery Surplus Feasts</h2>
+            <h2>Mystery surplus bags</h2>
             <p className="mystery-tagline">
-              Premium kitchens & bakeries pack their fresh, unsold delicacies into surprise boxes at <strong>up to 75% OFF</strong>. Delicious for you, zero waste for the planet!
+              Fresh food from local kitchens, packed at the end of the day for less.
+              <strong> Save up to 75%.</strong>
             </p>
           </div>
 
-          {/* Countdown Clock */}
           <div className="mystery-timer-box">
-            <span className="timer-title">⏰ OFFERS EXPIRE IN</span>
+            <span className="timer-title">Tonight's window closes in</span>
             <div className="timer-digits">
               <div className="digit-block">
                 <span>{formatNumber(timeLeft.hours)}</span>
@@ -87,7 +86,6 @@ const MysteryBagDisplay = () => {
           </div>
         </div>
 
-        {/* Dietary Filters */}
         <div className="mystery-filters">
           {['All', 'Veg', 'Non-Veg', 'Bakery'].map((tab) => (
             <button
@@ -95,16 +93,12 @@ const MysteryBagDisplay = () => {
               className={`filter-btn ${filter === tab ? 'active' : ''}`}
               onClick={() => setFilter(tab)}
             >
-              {tab === 'All' && '✨ All Boxes'}
-              {tab === 'Veg' && '🥗 Pure Veg'}
-              {tab === 'Non-Veg' && '🍗 Non-Veg Feast'}
-              {tab === 'Bakery' && '🥐 Bakery & Desserts'}
+              {tab === 'All' ? 'All bags' : tab === 'Bakery' ? 'Bakery' : tab}
             </button>
           ))}
         </div>
       </div>
 
-      {/* Cards Grid */}
       <div className="mystery-cards-grid">
         {filteredBags.map((bag) => {
           const discountPct = bag.originalPrice && bag.originalPrice > bag.price
@@ -126,23 +120,20 @@ const MysteryBagDisplay = () => {
                   {discountPct}% OFF
                 </div>
 
-                <div className="mystery-badge-pill">
-                  ✨ SURPRISE BOX
-                </div>
+                <div className="mystery-badge-pill">Mystery bag</div>
 
                 <div className={`dietary-badge ${bag.dietaryType?.toLowerCase()}`}>
                   {bag.dietaryType || 'Veg'}
                 </div>
 
-                {/* Add to Cart or Counter Floating Button */}
                 <div className="mystery-cart-btn-wrapper">
                   {!cartItem[bag._id] ? (
                     <button
                       className="mystery-add-btn"
                       onClick={() => addToCart(bag._id)}
+                      aria-label={`Add ${bag.name} to cart`}
                     >
-                      <img src={assets.add_icon_white} alt="Add" />
-                      Grab Box
+                      <img src={assets.add_icon_white} alt="" />
                     </button>
                   ) : (
                     <div className="mystery-item-counter">
@@ -162,11 +153,10 @@ const MysteryBagDisplay = () => {
                 </div>
               </div>
 
-              {/* Card Body */}
               <div className="mystery-card-body">
                 <div className="card-top-info">
                   <span className="mystery-stock-pill">
-                    🔥 Only {bag.stock || 4} boxes left
+                    {bag.stock || 4} bags left
                   </span>
                   <span className="mystery-window-time">
                     {bag.startTime || '9:00 PM'} - {bag.endTime || '11:45 PM'}
@@ -176,9 +166,8 @@ const MysteryBagDisplay = () => {
                 <h3 className="mystery-card-title">{bag.name}</h3>
                 <p className="mystery-card-desc">{bag.description}</p>
 
-                {/* Surprise Guarantee Tag */}
                 <div className="surprise-guarantee">
-                  🎁 <span>Surprise Curated Box: Fresh daily kitchen batch</span>
+                  Fresh selection from today's kitchen surplus
                 </div>
 
                 <div className="mystery-pricing-row">
@@ -189,7 +178,7 @@ const MysteryBagDisplay = () => {
                     )}
                   </div>
                   <span className="savings-badge">
-                    Save ₹{savedAmount}!
+                    Save ₹{savedAmount}
                   </span>
                 </div>
               </div>
@@ -198,27 +187,26 @@ const MysteryBagDisplay = () => {
         })}
       </div>
 
-      {/* Explainer: How It Works */}
       <div className="mystery-how-it-works">
         <div className="how-step">
-          <span className="step-icon">📦</span>
+          <span className="step-icon">1</span>
           <div className="step-info">
-            <h4>1. Unsold Daily Surplus</h4>
-            <p>Premium kitchens pack top-quality unsold food at the end of dinner shift.</p>
+            <h4>Choose a bag</h4>
+            <p>See what local kitchens have left at the end of the day.</p>
           </div>
         </div>
         <div className="how-step">
-          <span className="step-icon">💰</span>
+          <span className="step-icon">2</span>
           <div className="step-info">
-            <h4>2. Flat 65% - 75% Off</h4>
-            <p>You pay a fraction of the cost, saving money while exploring new tastes.</p>
+            <h4>Enjoy a lower price</h4>
+            <p>Get good food for less while helping a local business.</p>
           </div>
         </div>
         <div className="how-step">
-          <span className="step-icon">🌱</span>
+          <span className="step-icon">3</span>
           <div className="step-info">
-            <h4>3. Zero Waste Hero</h4>
-            <p>Every mystery order directly prevents good food from ending in landfills.</p>
+            <h4>Help reduce waste</h4>
+            <p>Your order gives surplus food a place at the table.</p>
           </div>
         </div>
       </div>

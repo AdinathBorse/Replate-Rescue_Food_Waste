@@ -6,8 +6,8 @@ const Footer = () => {
         <div className='footer' id='footer'>
             <div className="footer-content">
                 <div className="footer-content-left">
-                    <img src={assets.logo} alt="logo" id='logo' />
-                    <p>FreshFood brings you fresh, delicious meals from your favorite restaurants straight to your door. Fast delivery, easy ordering, and top-quality service – because great food should never wait.</p>
+                    <img src={assets.Replate_logo} alt="logo" id='logo' />
+                    <p>Replate brings you fresh, delicious meals from your favorite restaurants straight to your door. Fast delivery, easy ordering, and top-quality service – because great food should never wait.</p>
                     <div className="footer-social-icons">
                         <img src={assets.facebook_icon} alt="" />
                         <img src={assets.twitter_icon} alt="" />
@@ -27,13 +27,13 @@ const Footer = () => {
                     <h2>GET IN TOUCH</h2>
                     <ul>
                         <li>+91-212-456-2345</li>
-                        <li>contactus@freshfood.com</li>
+                        <li>contactus@replate.com</li>
                     </ul>
                 </div>
             </div>
             
             <p className='p'>By continuing past this page, you agree to our Terms of Service, Cookie Policy, Privacy Policy and Content Policies. All trademarks are properties of their respective owners
-                2008-2025 © FreshFood™ Ltd. All rights reserved</p>
+                2008-2025 © Replate™ Ltd. All rights reserved</p>
         </div>
     )
 }

@@ -23,7 +23,8 @@ const addFood = async (req, res) => {
       dietaryType: req.body.dietaryType || "Veg",
       stock: req.body.stock ? Number(req.body.stock) : 0,
       startTime: req.body.startTime || "9:00 PM",
-      endTime: req.body.endTime || "11:45 PM"
+      endTime: req.body.endTime || "11:45 PM",
+      adminId: req.user.userId
    })
    try {
       await food.save();
@@ -38,6 +39,16 @@ const addFood = async (req, res) => {
 const listFood = async (req, res) => {
    try {
       const foods = await foodModel.find({});
+      res.json({ success: true, data: foods });
+   } catch (error) {
+      console.log(error);
+      res.json({ success: false, message: "Error" });
+   }
+}
+
+const listMyFood = async (req, res) => {
+   try {
+      const foods = await foodModel.find({ adminId: req.user.userId });
       res.json({ success: true, data: foods });
    } catch (error) {
       console.log(error);
@@ -63,6 +74,9 @@ const removeFood = async (req, res) => {
       if (!food) {
          return res.json({ success: false, message: "Food item not found" });
       }
+      if (food.adminId !== req.user.userId) {
+         return res.json({ success: false, message: "You can only remove your own food items" });
+}
 
       // Check if any other food item in DB is still using this exact same image file
       const otherItemUsingImage = await foodModel.findOne({
@@ -87,4 +101,4 @@ const removeFood = async (req, res) => {
       res.json({ success: false, message: "Error in removing food item" });
    }
 }
-export { addFood, listFood, removeFood, getMysteryBags };
+export { addFood, listFood, listMyFood, removeFood, getMysteryBags };

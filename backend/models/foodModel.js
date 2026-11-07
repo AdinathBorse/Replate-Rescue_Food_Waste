@@ -12,6 +12,7 @@ const foodSchema = new mongoose.Schema({
     stock: { type: Number, default: 0 },
     startTime: { type: String, default: "9:00 PM" },
     endTime: { type: String, default: "11:45 PM" },
+    adminId: { type: String, default: "" },
 });
 
 const foodModel = mongoose.models.food || mongoose.model("food", foodSchema);

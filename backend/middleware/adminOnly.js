@@ -1,0 +1,8 @@
+// middleware/adminOnly.js
+const adminOnly = (req, res, next) => {
+    if (!req.user || req.user.role !== "admin") {
+        return res.json({ success: false, message: "Admins only" });
+    }
+    next();
+};
+export default adminOnly;

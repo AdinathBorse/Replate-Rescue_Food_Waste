@@ -1,5 +1,7 @@
 import basket_icon from './basket_icon.png'
 import logo from './logo.png'
+import logo_mark from './logo-mark.png'
+import Replate_logo from './Replate_logo.png'
 import header_img from './header_img.png'
 import search_icon from './search_icon.png'
 import menu_1 from './menu_1.png'
@@ -65,6 +67,8 @@ import order_icon from './order_icon.png'
 import upload_area from './upload_area.png'
 
 export const assets = {
+    logo_mark,
+    Replate_logo,
     logo,
     basket_icon,
     header_img,

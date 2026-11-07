@@ -7,6 +7,7 @@ import userRouter from './routes/userRoute.js';
 import 'dotenv/config'
 import cartRouter from './routes/cartRoutes.js';
 import orderRouter from './routes/orderRoutes.js';
+import reportRouter from './routes/reportRoutes.js';
 
 //app config
 const app = express();
@@ -26,6 +27,7 @@ app.use('/images', express.static('uploads'))
 app.use("/api/user",userRouter)
 app.use("/api/cart",cartRouter)
 app.use("/api/order",orderRouter)
+app.use("/api/report", reportRouter)
 
 
 
@@ -36,4 +38,3 @@ app.get("/", (req, res) => {
 app.listen(port,()=>{
     console.log(`Server is running on http://localhost:${port}`);
 })
-

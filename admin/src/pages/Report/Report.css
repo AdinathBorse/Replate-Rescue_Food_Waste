@@ -1,0 +1,84 @@
+.report-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap
+}
+
+.report-controls label {
+    display: flex;
+    align-items: center;
+    gap: 6px
+}
+
+.report-controls input {
+    padding: 8px;
+    border: 1px solid #237912;
+    color: #454545
+}
+
+.report .add-button {
+    margin: 0
+}
+
+.report .add-button,
+.report .add-button:hover,
+.report .add-button:focus,
+.report .add-button:active {
+    background-color: #267316;
+}
+
+.report .add-button:focus-visible {
+    outline: 2px solid #267316;
+    outline-offset: 2px;
+}
+
+.report-results {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    color: #454545
+}
+
+.report-section {
+    border: 1px solid #267316;
+    padding: 16px
+}
+
+.report-section b {
+    display: block;
+    margin-bottom: 8px
+}
+
+.report-section p {
+    margin: 4px 0
+}
+
+.report-section table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px
+}
+
+.report-section th,
+.report-section td {
+    padding: 8px 10px;
+    border: 1px solid #cacaca;
+    text-align: left
+}
+
+@media print {
+
+    .navbar,
+    .sidebar,
+    hr,
+    .report-controls {
+        display: none !important
+    }
+
+    .report.add {
+        width: 100%;
+        margin: 0;
+        padding: 0
+    }
+}

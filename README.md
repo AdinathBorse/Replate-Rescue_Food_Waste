@@ -158,20 +158,30 @@ Create a `.env` file in the `backend` folder:
 
 ```env
 # MongoDB
-MONGO_URI=mongodb://localhost:27017/foodDell
+MONGODB_URI=mongodb://localhost:27017/foodDell
 
 # JWT Secret
 JWT_SECRET=your_jwt_secret_key_here
+
+# Admin registration code (choose a private value)
+ADMIN_SIGNUP_CODE=your_private_admin_signup_code
 
 # Server Port
 PORT=4000
 
 # Stripe API Keys
-STRIPE_API_KEY=your_stripe_secret_key_here
+STRIPE_SECRET_KEY=your_stripe_secret_key_here
 
 # Frontend URLs
 FRONTEND_URL=http://localhost:5173
 ADMIN_URL=http://localhost:5174
+```
+
+Use the value of `ADMIN_SIGNUP_CODE` in the admin registration form. After registering,
+assign existing foods to that admin from the repository root with:
+
+```bash
+node backend/assignLegacyFoods.js admin@example.com
 ```
 
 ### Frontend Configuration (if needed)

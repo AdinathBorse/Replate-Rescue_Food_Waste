@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 
 
 
-const Add = ({url}) => {
+const Add = ({url, token}) => {
 
   const [Image, setImage] = useState(null);
   const [isMysteryBag, setIsMysteryBag] = useState(false);
@@ -49,7 +49,7 @@ const Add = ({url}) => {
       formData.append('endTime', data.endTime || "11:45 PM");
     }
 
-    const response = await axios.post(`${url}/api/food/add`, formData);
+    const response = await axios.post(`${url}/api/food/add`, formData,{ headers: { token } });
     if (response.data.success) {
       setData({
         name: "",
@@ -90,7 +90,7 @@ const Add = ({url}) => {
               checked={isMysteryBag}
               onChange={(e) => setIsMysteryBag(e.target.checked)}
             />
-            <span>🌙 List as <strong>Mystery Surplus Bag</strong> (Anti-Food Waste Deal)</span>
+            <span> List as <strong>Mystery Surplus Bag</strong> (Anti-Food Waste Deal)</span>
           </label>
         </div>
 
@@ -101,7 +101,7 @@ const Add = ({url}) => {
             value={data.name}
             type="text"
             name='name'
-            placeholder={isMysteryBag ? "e.g., The Royal Midnight Mystery Vault" : "Enter product name"}
+            placeholder={isMysteryBag ? "Enter mystery bag name" : "Enter product name"}
             required
           />
         </div>
@@ -113,7 +113,7 @@ const Add = ({url}) => {
             value={data.description}
             name="description"
             rows="5"
-            placeholder={isMysteryBag ? "Describe the surprise experience without spoiling exact items (e.g. 3-4 chef's secret specialties from tonight's fresh batch)" : "Write content here"}
+            placeholder={isMysteryBag ? "Describe the mystery bag experience" : "Write content here"}
             required
           ></textarea>
         </div>
@@ -125,9 +125,9 @@ const Add = ({url}) => {
               <div className="flex-col">
                 <p>Dietary Type</p>
                 <select onChange={onChangeHandler} name="dietaryType" value={data.dietaryType}>
-                  <option value="Veg">🥗 Pure Veg</option>
-                  <option value="Non-Veg">🍗 Non-Veg</option>
-                  <option value="Bakery">🥐 Bakery / Dessert</option>
+                  <option value="Veg"> Pure Veg</option>
+                  <option value="Non-Veg"> Non-Veg</option>
+                  <option value="Bakery"> Bakery / Dessert</option>
                 </select>
               </div>
 
@@ -159,14 +159,14 @@ const Add = ({url}) => {
               <div className="flex-col">
                 <p>Active Start Time (Indian Time)</p>
                 <select onChange={onChangeHandler} name="startTime" value={data.startTime}>
-                  <option value="09:00 PM">09:00 PM (Dinner End - Recommended)</option>
+                  <option value="09:00 PM">09:00 PM</option>
                   <option value="08:00 PM">08:00 PM</option>
                   <option value="08:30 PM">08:30 PM</option>
                   <option value="09:30 PM">09:30 PM</option>
                   <option value="10:00 PM">10:00 PM</option>
                   <option value="10:30 PM">10:30 PM</option>
                   <option value="11:00 PM">11:00 PM</option>
-                  <option value="12:00 PM">12:00 PM (Noon Lunch)</option>
+                  <option value="12:00 PM">12:00 PM</option>
                   <option value="01:00 PM">01:00 PM</option>
                   <option value="02:00 PM">02:00 PM</option>
                   <option value="03:00 PM">03:00 PM</option>
@@ -175,7 +175,7 @@ const Add = ({url}) => {
                   <option value="06:00 PM">06:00 PM</option>
                   <option value="07:00 PM">07:00 PM</option>
                   <option value="07:30 PM">07:30 PM</option>
-                  <option value="08:00 AM">08:00 AM (Morning Breakfast)</option>
+                  <option value="08:00 AM">08:00 AM</option>
                   <option value="09:00 AM">09:00 AM</option>
                   <option value="10:00 AM">10:00 AM</option>
                   <option value="11:00 AM">11:00 AM</option>
@@ -185,19 +185,19 @@ const Add = ({url}) => {
               <div className="flex-col">
                 <p>Active End Time (Indian Time)</p>
                 <select onChange={onChangeHandler} name="endTime" value={data.endTime}>
-                  <option value="11:45 PM">11:45 PM (Midnight Close - Recommended)</option>
+                  <option value="11:45 PM">11:45 PM</option>
                   <option value="09:30 PM">09:30 PM</option>
                   <option value="10:00 PM">10:00 PM</option>
                   <option value="10:30 PM">10:30 PM</option>
                   <option value="11:00 PM">11:00 PM</option>
                   <option value="11:30 PM">11:30 PM</option>
-                  <option value="12:00 AM">12:00 AM (Midnight)</option>
+                  <option value="12:00 AM">12:00 AM</option>
                   <option value="12:30 AM">12:30 AM</option>
-                  <option value="01:00 AM">01:00 AM (Late Night)</option>
+                  <option value="01:00 AM">01:00 AM</option>
                   <option value="02:00 AM">02:00 AM</option>
-                  <option value="03:00 PM">03:00 PM (Afternoon End)</option>
+                  <option value="03:00 PM">03:00 PM</option>
                   <option value="04:00 PM">04:00 PM</option>
-                  <option value="11:00 AM">11:00 AM (Morning End)</option>
+                  <option value="11:00 AM">11:00 AM</option>
                   <option value="12:00 PM">12:00 PM</option>
                 </select>
               </div>

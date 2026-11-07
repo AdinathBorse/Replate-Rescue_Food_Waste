@@ -41,15 +41,15 @@
     transition: background-color 0.2s ease;
 }
 .add-button:hover {
-    background-color: #ff5722;
+    background-color: #23972d;
 }
 
 /* Mystery Surplus Bag Styles */
 .add-mystery-toggle {
     margin: 10px 0;
     padding: 12px 16px;
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
+    background: #ecf1ef;
+    border: 1px solid #eef6f2;
     border-radius: 8px;
     max-width: max(40%, 360px);
 }

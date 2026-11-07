@@ -6,13 +6,13 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
 
-const List = ({url}) => {
+const List = ({url, token}) => {
 
  // const url = "http://localhost:4000";
   const [list, setList] = useState([]);
 
   const fetchList = async () => {
-    const response = await axios.get(`${url}/api/food/list`);
+    const response = await  axios.get(`${url}/api/food/myfoods`, { headers: { token } }) 
     
     if (response.data.success) {
       setList(response.data.data);
@@ -23,7 +23,7 @@ const List = ({url}) => {
   }
 
   const removeFood = async (foodId) => {
-    const response = await axios.post(`${url}/api/food/remove`, {id: foodId});
+    const response = await axios.post(`${url}/api/food/remove`, {id: foodId}, { headers: { token } })
     await fetchList();
     if (response.data.success) {
       toast.success(response.data.message);
@@ -56,7 +56,7 @@ const List = ({url}) => {
                 <p style={{fontWeight: item.isMysteryBag ? "600" : "normal"}}>{item.name}</p>
                 {item.isMysteryBag && (
                   <span style={{fontSize: "11px", color: "#059669", background: "#ecfdf5", padding: "2px 6px", borderRadius: "4px", display: "inline-block", marginTop: "2px", border: "1px solid #a7f3d0"}}>
-                    🌙 Mystery Bag ({item.dietaryType})
+                    Mystery Bag ({item.dietaryType})
                   </span>
                 )}
               </div>

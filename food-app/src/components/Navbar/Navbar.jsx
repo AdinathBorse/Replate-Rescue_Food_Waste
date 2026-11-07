@@ -21,10 +21,10 @@ const Navbar = ({setShowLogin}) => {
 
   return (
     <div className="navbar">
-        <Link to='/'><img src="/logo.png" alt="" className="logo"/></Link>
+        <Link to='/'><img src={assets.Replate_logo} alt="" className="logo"/></Link>
         <ul className="navbar-menu">
             <Link to='/' onClick={()=>setMenu("Home")} className={menu==="Home"?"active":""}>Home</Link>
-            <a href='#mystery-deals' onClick={()=>setMenu("Mystery")} className={menu==="Mystery"?"active mystery-nav-item":"mystery-nav-item"}>Mystery Bags 🎁</a>
+            <a href='#mystery-deals' onClick={()=>setMenu("Mystery")} className={menu==="Mystery"?"active mystery-nav-item":"mystery-nav-item"}>Mystery Bags</a>
             <a href='#explore-menu' onClick={()=>setMenu("Menu")} className={menu==="Menu"?"active":""}>Menu</a>
             <a href='#a-d' onClick={()=>setMenu("Mobile-app")} className={menu==="Mobile-app"?"active":""}>Mobile-app</a>
             <a href='#footer' onClick={()=>setMenu("Contact-us")} className={menu==="Contact-us"?"active":""}>Contact-us</a>

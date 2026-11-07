@@ -5,26 +5,34 @@ import { Route, Routes } from 'react-router-dom'
 import Add from './pages/Add/Add.jsx'
 import List from './pages/List/List.jsx'
 import Order from './pages/Order/Order.jsx'
-import { ToastContainer, toast } from 'react-toastify';
+import Report from './pages/Report/Report.jsx'
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import  { useState } from 'react'
+import Login from './pages/Login/Login.jsx'
 
 
 
 const App = () => {
-
   const url = "http://localhost:4000";
+  const [token, setToken] = useState(localStorage.getItem('adminToken') || '');
+
+  if (!token) {
+    return (<div><ToastContainer/><Login url={url} setToken={setToken}/></div>)
+  }
 
   return (
     <div>
       <ToastContainer/>
-      <Navbar/>
+      <Navbar setToken={setToken} url={url} token={token}/>
       <hr/>
       <div className="app-content">
         <Sidebar/>
         <Routes>
-          <Route path="/add" element={<Add url={url}/>}/>
-          <Route path="/list" element={<List url={url}/>}/>
-          <Route path="/order" element={<Order url={url}/>}/>
+          <Route path="/add" element={<Add url={url} token={token}/>}/>
+          <Route path="/list" element={<List url={url} token={token}/>}/>
+          <Route path="/order" element={<Order url={url} token={token}/>}/>
+          <Route path="/report" element={<Report url={url} token={token}/>}/>
         </Routes>
       </div>
     </div>
